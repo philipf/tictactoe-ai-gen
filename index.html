@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
+    <h1 class="text-3xl font-bold mb-6">Tic-Tac-Toe</h1>
+    
+    <div id="game-container" class="mb-8 flex flex-col items-center">
+        <!-- Scoreboard -->
+        <div id="scoreboard" class="flex justify-between w-full max-w-xs mb-4 p-3 bg-white rounded shadow">
+            <div class="text-center">
+                <span class="font-bold text-blue-600">Player X</span>
+                <div id="score-x" class="text-2xl font-bold">0</div>
+            </div>
+            <div class="text-center">
+                <span class="font-bold text-red-600">Player O</span>
+                <div id="score-o" class="text-2xl font-bold">0</div>
+            </div>
+        </div>
+        
+        <!-- Status message -->
+        <div id="status" class="mb-4 text-xl font-semibold h-8">
+            X's turn
+        </div>
+        
+        <!-- Game board -->
+        <div id="board" class="grid grid-cols-3 gap-2 mb-4">
+            <!-- 3x3 grid of cells -->
+            <div class="cell w-20 h-20 bg-white flex items-center justify-center text-4xl font-bold cursor-pointer shadow hover:bg-gray-50" data-index="0"></div>
+            <div class="cell w-20 h-20 bg-white flex items-center justify-center text-4xl font-bold cursor-pointer shadow hover:bg-gray-50" data-index="1"></div>
+            <div class="cell w-20 h-20 bg-white flex items-center justify-center text-4xl font-bold cursor-pointer shadow hover:bg-gray-50" data-index="2"></div>
+            <div class="cell w-20 h-20 bg-white flex items-center justify-center text-4xl font-bold cursor-pointer shadow hover:bg-gray-50" data-index="3"></div>
+            <div class="cell w-20 h-20 bg-white flex items-center justify-center text-4xl font-bold cursor-pointer shadow hover:bg-gray-50" data-index="4"></div>
+            <div class="cell w-20 h-20 bg-white flex items-center justify-center text-4xl font-bold cursor-pointer shadow hover:bg-gray-50" data-index="5"></div>
+            <div class="cell w-20 h-20 bg-white flex items-center justify-center text-4xl font-bold cursor-pointer shadow hover:bg-gray-50" data-index="6"></div>
+            <div class="cell w-20 h-20 bg-white flex items-center justify-center text-4xl font-bold cursor-pointer shadow hover:bg-gray-50" data-index="7"></div>
+            <div class="cell w-20 h-20 bg-white flex items-center justify-center text-4xl font-bold cursor-pointer shadow hover:bg-gray-50" data-index="8"></div>
+        </div>
+        
+        <!-- Reset button -->
+        <button id="reset-button" class="px-4 py-2 bg-indigo-600 text-white font-semibold rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition">
+            Reset Game
+        </button>
+    </div>
+    
+    <!-- Test Section -->
+    <div id="test-section" class="mt-8 p-4 bg-gray-200 rounded w-full max-w-md">
+        <h2 class="text-xl font-semibold mb-2">Test Output</h2>
+        <div id="test-output" class="font-mono bg-white p-2 rounded">
+            <!-- Test results will appear here -->
+        </div>
+    </div>
+    
+    <!-- Simple Test Runner -->
+    <script>
+        // Simple test runner
+        function runTests() {
+            const testOutput = document.getElementById('test-output');
+            testOutput.innerHTML = '';
+            
+            // Test 1: Check if jQuery is loaded
+            try {
+                if (typeof jQuery !== 'undefined') {
+                    logTestResult('jQuery loaded successfully', true);
+                } else {
+                    logTestResult('jQuery failed to load', false);
+                }
+            } catch (e) {
+                logTestResult('jQuery test error: ' + e.message, false);
+            }
+            
+            // Test 2: Check if app.js is loaded
+            try {
+                if (typeof appLoaded !== 'undefined' && appLoaded === true) {
+                    logTestResult('app.js loaded successfully', true);
+                } else {
+                    logTestResult('app.js not loaded or appLoaded variable not set', false);
+                }
+            } catch (e) {
+                logTestResult('app.js test error: ' + e.message, false);
+            }
+        }
+        
+        function logTestResult(message, success) {
+            const testOutput = document.getElementById('test-output');
+            const resultElement = document.createElement('div');
+            resultElement.className = success ? 'text-green-600' : 'text-red-600';
+            resultElement.textContent = (success ? '✓ ' : '✗ ') + message;
+            testOutput.appendChild(resultElement);
+        }
+        
+        // Run tests after everything is loaded
+        window.addEventListener('load', runTests);
+    </script>
+    
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
