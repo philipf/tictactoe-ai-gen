@@ -2,6 +2,8 @@
 
 This project is a simple Tic-Tac-Toe game built using HTML, Tailwind CSS, and jQuery. It is a simple example of a project that was generated using AI Coding Agent, in this case, Roo, a VS Code extension.
 
+A running version of the site can be found [here](https://blog.notnot.ninja/tictactoe-ai-gen/)
+
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
